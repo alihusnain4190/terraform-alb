@@ -15,3 +15,10 @@ variable "private_instance" {
   type    = string
   default = "ali-private"
 }
+
+# AWS EC2 Private Instance Count
+variable "private_instance_count" {
+  description = "AWS EC2 Private Instances Count"
+  type        = number
+  default     = 1
+}

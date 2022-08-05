@@ -7,7 +7,9 @@ module "ec2-instance-bastion" {
   #availability_zone      = module.vpc.vpc_availability_zone
   key_name               = var.instance_keypair
   vpc_security_group_ids = [module.public_bastion_sg.this_security_group_id]
-  subnet_id              = module.vpc.public_subnets[0]
+  subnet_id              = element(module.vpc.public_subnets, 2)
+  user_data              = file("${path.module}/app1-install.sh")
+  count                  = 2
 }
 
 
